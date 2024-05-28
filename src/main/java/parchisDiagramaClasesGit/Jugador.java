@@ -11,10 +11,14 @@ public class Jugador {
 	private String nombre;
 	private Tablero tablero;
 	
-	public Jugador(String nombre, Tablero tablero) {
+	private Ficha ficha;
+	
+	public Jugador(String nombre, Tablero tablero  , Ficha ficha) {
 		
 		this.nombre = nombre;
 		this.tablero = tablero;
+		
+		this.ficha = ficha;
 		
 	}
 	
