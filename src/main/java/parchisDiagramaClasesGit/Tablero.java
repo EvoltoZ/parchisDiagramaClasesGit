@@ -9,7 +9,7 @@ package parchisDiagramaClasesGit;
 public class Tablero {
 
 	private int numCasillas;
-	boolean[] casillas;
+	private int[] casillas; //Cada casilla tiene asociado un numero (0: no ficha , 1:jugador 1, 2:ficha jugador, 3: 2 fichas jugador 1, 4: 2 fichas jugador 2
 	
 	/**
 	 * 
