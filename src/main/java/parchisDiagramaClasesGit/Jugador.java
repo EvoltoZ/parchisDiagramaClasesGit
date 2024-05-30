@@ -39,7 +39,7 @@ public class Jugador {
 	
 	public int consultarTablero() {
 		
-		int[] casillas = tablero.consultarCasillas();
+		int[] casillas = tablero.consultarCasillas(); //
 		
 		int posicion = 0;
 		
