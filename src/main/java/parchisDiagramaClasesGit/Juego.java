@@ -3,51 +3,47 @@
  */
 package parchisDiagramaClasesGit;
 
-/**
- * 
- */
 public class Juego {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		
-		Tablero tablero = new Tablero();
-		Dado dado1 = new Dado();
-		
-		Ficha miFicha = new Ficha();
-		
-		Jugador yo = new Jugador("Angel", tablero, miFicha);		
-		do {
+    public static void main(String[] args) {
+        Tablero tablero = new Tablero();
+        Dado dado1 = new Dado();
+        Dado dado2 = new Dado();
 
-			yo.tirarDado(dado1);
-			System.out.println("Ha salido el " + yo.consultarDado(dado1));
+        Usuario usuario1 = new Usuario("Angel", "password123");
+        Usuario usuario2 = new Usuario("Maria", "password456");
 
-		} while (yo.consultarDado(dado1) != 5);
+        Jugador jugador1 = new Jugador("Angel", tablero, usuario1);
+        Jugador jugador2 = new Jugador("Maria", tablero, usuario2);
 
-		yo.moverFicha(1);
-		System.out.println("La ficha sale de casa");
-		
-		Dado dado2 = new Dado();
-		
-		int tirada;
-		do {
+        Jugador[] jugadores = {jugador1, jugador2};
+        int currentPlayer = 0;
 
-			yo.tirarDado(dado1);
-			yo.tirarDado(dado2);
-			
-			tirada = yo.consultarDado(dado1)+yo.consultarDado(dado2);
-			
-			System.out.println("Ha salido el " + tirada);		
-			yo.moverFicha(tirada);
-			
-			System.out.println("La ficha esta en la casilla "+yo.consultarTablero());
+        while (true) {
+            Jugador jugador = jugadores[currentPlayer];
+            System.out.println(jugador.getNombre() + "'s turn");
 
-		} while (yo.consultarTablero() < tablero.consultarNumCasillas());
+            jugador.tirarDado(dado1);
+            jugador.tirarDado(dado2);
 
-		System.out.println("Fin del juego");
+            int tirada = jugador.consultarDado(dado1) + jugador.consultarDado(dado2);
+            System.out.println("Ha salido el " + tirada);
 
-	}
+            // For simplicity, always move the first ficha
+            jugador.moverFicha(tirada, 0);
 
+            int nuevaPosicion = jugador.consultarTablero();
+            System.out.println("La ficha esta en la casilla " + nuevaPosicion);
+
+            if (nuevaPosicion >= tablero.consultarNumCasillas()) {
+                System.out.println(jugador.getNombre() + " wins!");
+                break;
+            }
+
+            currentPlayer = (currentPlayer + 1) % 2;
+        }
+
+        System.out.println("Fin del juego");
+    }
 }
+
