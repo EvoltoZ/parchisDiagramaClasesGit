@@ -6,24 +6,23 @@ package parchisDiagramaClasesGit;
 /**
  * 
  */
+package parchisDiagramaClasesGit;
+
 public class Jugador {
+    private String nombre;
+    private Tablero tablero;
+    private Ficha ficha;
+    private Usuario usuario;
 
-	private String nombre;
-	private Tablero tablero;
-	
+    public Jugador(String nombre, Tablero tablero, Usuario usuario) {
+        this.nombre = nombre;
+        this.tablero = tablero;
+        this.usuario = usuario;
+        this.ficha = new Ficha();
+    }
 
-	
-	private Ficha ficha;
-	
-	public Jugador(String nombre, Tablero tablero  , Ficha ficha) {
-		
-		this.nombre = nombre;
-		this.tablero = tablero;
-		
+}
 
-		this.ficha = ficha;
-		
-	}
 	
 	public void tirarDado(Dado d) {
 		
