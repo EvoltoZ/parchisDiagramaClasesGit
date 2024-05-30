@@ -7,9 +7,12 @@ package parchisDiagramaClasesGit;
  * 
  */
 public class Ficha {
-
 	
-	String color;
+	Jugador jugador;
 	int casilla;
 	
+	public void mover(int casillas) {
+		casilla += casillas;
+	}
 }
+

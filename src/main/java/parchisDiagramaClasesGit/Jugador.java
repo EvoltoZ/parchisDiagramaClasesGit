@@ -11,14 +11,17 @@ public class Jugador {
 	private String nombre;
 	private Tablero tablero;
 	
-	private String color;
+
 	
-	public Jugador(String nombre, Tablero tablero, String color) {
+	private Ficha ficha;
+	
+	public Jugador(String nombre, Tablero tablero  , Ficha ficha) {
 		
 		this.nombre = nombre;
 		this.tablero = tablero;
 		
-		this.color = color;
+
+		this.ficha = ficha;
 		
 	}
 	
@@ -57,8 +60,7 @@ public class Jugador {
 	
 	public void moverFicha(int cs) {
 		
-		int origen = consultarTablero();
-		tablero.cambiarFicha(origen, origen+cs);;
+		ficha.mover(cs);
 		
 	}
 	
